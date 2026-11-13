@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#000000">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Prompt">
+  <title>Prompt</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app">
+    <section id="editor" class="editor" aria-label="Edit script">
+      <header>
+        <h1>Prompt</h1>
+        <button id="readButton" class="primary" type="button">Read</button>
+      </header>
+      <textarea id="scriptInput" aria-label="Teleprompter script" spellcheck="true" placeholder="Paste or type your script here…"></textarea>
+      <div class="settings">
+        <label>
+          <span>Speed <output id="speedValue"></output></span>
+          <input id="speedInput" type="range" min="10" max="100" step="5" value="35">
+        </label>
+        <label>
+          <span>Text size <output id="sizeValue"></output></span>
+          <input id="sizeInput" type="range" min="28" max="88" step="2" value="52">
+        </label>
+        <label class="switch-row">
+          <span>Mirror horizontally</span>
+          <input id="mirrorInput" type="checkbox" checked>
+        </label>
+      </div>
+      <p class="hint">Your script stays on this device.</p>
+    </section>
+
+    <section id="reader" class="reader" hidden aria-label="Teleprompter reader">
+      <div id="scrollArea" class="scroll-area" tabindex="0">
+        <div id="promptText" class="prompt-text"></div>
+      </div>
+      <div id="countdown" class="countdown" hidden aria-live="assertive"></div>
+      <div id="readerControls" class="reader-controls">
+        <button id="backButton" type="button" aria-label="Back to editor">Edit</button>
+        <button id="playButton" class="primary" type="button">Start</button>
+        <button id="restartButton" type="button">Restart</button>
+      </div>
+      <div id="pausedBadge" class="paused-badge" hidden>Paused</div>
+    </section>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>
